@@ -1,0 +1,38 @@
+.titulo{
+    color: darkblue;
+    font-size: x-large;
+    margin-bottom: 25px;
+}
+.esquerda{
+    margin-left: 50px;
+    margin-top: 30px;
+}
+.bton{
+    margin-top: 10px;
+    background: darkblue;
+    color: white;
+    height: 40px;
+    width: 150px;
+    font-size: small;
+    
+
+}
+.entrada{
+    margin-bottom: 10px;
+    width: 50%;
+}
+.selecao{
+    margin-bottom: 10px;
+    width: 50%;
+    color: gray;
+}
+.descricao{
+    color: darkblue;
+    font-size: small;
+}
+
+/* IE11 hide native button (thanks Matt!) */
+select::-ms-expand {
+display: none;
+}
+

@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Desafio Estágio Desenvolvimento</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="CSS/bootstrap-5.0.1-dist/bootstrap-5.0.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="CSS/main.css" >
+  </head>
+  <body>
+    <script src="JS/jquery-3.6.0.js"></script>
+    <script src="JS/jquery.inputmask.js"></script>
+
+
+    <script>
+
+window.onload = init;
+
+function init() {
+     document.getElementById('add').onclick = add;
+}
+
+//Lista
+function add() {
+
+var lista = document.getElementById("lista");
+var elementoli = document.createElement("li");
+var tabela = document.createElement("table");
+var excluir = document.createElement("button");
+excluir.style.cssText = 'background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;color: darkblue;';
+excluir.innerHTML = "<u>Excluir</u>"
+//excluir.onclick = Delete();
+var editar = document.createElement("button");
+editar.style.cssText = 'background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden;outline:none;color: darkblue;';
+editar.innerHTML = "<u>Editar</u>"
+tabela.style.cssText = 'background: lightgrey;color: darkblue;border-radius: 8px;width: 80%;';
+var row = tabela.insertRow(0);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  var cell6 = row.insertCell(5);
+  var cell7 = row.insertCell(6);
+  cell1.style.cssText = 'padding: 15px;height:80px;width:80px:margin-left: 10px;';
+  cell2.style.cssText = 'padding: 10px';
+  cell3.style.cssText = 'padding: 10px';
+  cell4.style.cssText = 'padding: 10px';
+  cell5.style.cssText = 'padding: 10px';
+  cell1.innerHTML = document.getElementById("Nome").value;;
+  cell2.innerHTML = document.getElementById("Fabricante").value;;
+  cell3.innerHTML = document.getElementById("Categoria").value;
+  cell4.innerHTML = document.getElementById("Quantidade").value;
+  cell5.innerHTML = document.getElementById("Valor").value;
+  cell6.appendChild(editar);
+  cell7.appendChild(excluir);
+
+elementoli.appendChild(tabela);
+lista.appendChild(elementoli);
+}     
+
+        //Mascara para o Valor
+        $(document).ready(function(){
+        $("#Valor").inputmask('decimal', {
+                    'alias': 'numeric',
+                    'groupSeparator': ',',
+                    'autoGroup': true,
+                    'digits': 2,
+                    'radixPoint': ".",
+                    'digitsOptional': false,
+                    'allowMinus': false,
+                    'prefix': 'R$ ',
+                    'placeholder': ''
+        });
+        });
+
+        function Delete() {
+            
+        }
+
+
+        //Opções do Select
+    $(document).ready(function () {
+        $("#Fabricante").change(function () {
+            var val = $(this).val();
+            if (val == "Nestle") {
+                $("#Categoria").html("<option value='Ovo da pascoa'>Ovo da pascoa</option><option value='Bebidas'>Bebidas</option>");
+            } else if (val == "Lacta") {
+                $("#Categoria").html("<option value='Chocolate'>Chocolate</option><option value='Bombom'>Bombom</option>");
+            } else if (val == "Nesquik") {
+                $("#Categoria").html("<option value='Calda'>Calda</option><option value='Achocolatado'>Achocolatado</option>");
+            } 
+    });
+    });
+
+
+    </script>
+   
+    <div class="row">
+        
+        <div class="col-5">
+            <div class="esquerda">
+            <H1 class="titulo"> CADASTRAR PRODUTO</H1>
+            <Label for="Nome" class="descricao">NOME PRODUTO</Label><br>
+            <input type="text" name="Nome" id="Nome" class="entrada"></input><br>
+            <Label for="Fabricante" class="descricao">FABRICANTE PRODUTO</Label><br>
+            <select name="Fabricante" id="Fabricante" class="selecao">
+                <option value="Não Selecionado" selected> Selecione o Fabricante </option>
+                <option value="Nestle">Nestle</option>
+                <option value="Lacta" >Lacta</option>
+                <option value="Nesquik">Nesquik</option>
+            </select><br> 
+            <Label for="Categoria" class="descricao">CATEGORIA PRODUTO</Label><br>
+            <select name="Categoria" id="Categoria" class="selecao">
+                <option value="Não Selecionado"> Selecione o Produto </option>
+            </select><br>
+            <Label for="Quantidade" class="descricao">QUANTIDADE</Label><br>
+            <input type="number" name="Quantidade" id="Quantidade" class="entrada" value="0" style="width: 15%;"></input><br>
+            <Label for="Valor" class="descricao">VALOR UNIDADE</Label><br>
+            <input type="text" name="Valor" id="Valor" class="entrada" style="width: 15%;font-size: small;" value="00"> </input><br>
+            <button type="button" name="add" id="add" onclick="add()" class="btn btn-primary, bton">Adicionar Produto</button>
+        </div>
+        </div>
+
+        <div class="col-7">
+            <div class="esquerda">
+            <h1 class="titulo">PRODUTOS CADASTRADOS</h1>
+            <ul id="lista" style="list-style-type:none;padding: 10px;">
+                <li>
+                    <table>
+                        <tr>
+                           
+                        </tr>
+                    </table>
+                </li>
+                
+            </ul>
+        </div>
+        </div>
+    </div>
+
+  </body>
+</html>
